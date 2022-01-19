@@ -1,4 +1,3 @@
-
 const RESULTS = {};
 
 function renderNextPage(nextPage) {
@@ -10,7 +9,7 @@ function renderNextPage(nextPage) {
     } else if (["animalsPage", "jobsPage", "verbalSPage", "verbalFPage"].includes(nextPage)) {
         expTimer(10);
     } else if (nextPage == "endingPage") {
-        console.log(RESULTS)
+        sendResults(RESULTS);
     }
 }
 
@@ -121,3 +120,15 @@ function setupTypingTest() {
         }
     })
 }
+
+
+// how to save final result, I think:
+async function sendResults(results) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/save", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        data: results
+    }));
+}
+
