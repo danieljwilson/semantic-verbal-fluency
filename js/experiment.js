@@ -124,11 +124,12 @@ function setupTypingTest() {
 
 // how to save final result, I think:
 async function sendResults(results) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/save", true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({
-        data: results
-    }));
+    fetch("/save", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: results })
+    }).then(res => {
+        console.log("Request complete! response:", res);
+    });
 }
 
