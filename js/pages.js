@@ -1,13 +1,12 @@
 // === for Daniel to edit ===
 const instructions = `
-    IN THIS TASK, dolor sit amet consectetur adipisicing elit. Eum blanditiis reiciendis harum. Inventore fugit ex
-    qui perspiciatis laborum molestias odio aspernatur, error quo officia quasi perferendis est, ipsa in id.
-    Placeat illo modi reprehenderit voluptatum iusto, vero ducimus. Vero recusandae suscipit mollitia tempora
-    ratione ut, totam perspiciatis quidem, repellendus a quae sapiente nostrum quam deserunt eveniet porro adipisci
-    esse similique.
-    Alias quas ullam enim consequatur tempora, molestias mollitia omnis quidem sequi sed similique quam earum
-    laborum, culpa doloribus. Quos voluptates cum cumque earum consequuntur dolores perferendis tenetur nemo
-    incidunt corporis?
+In this task we will be asking your 
+to list words that are either in a specific 
+category or start with a specific letter.
+<br>
+First however, we want to do a quick test of your typing speed.
+
+
 `;
 
 
@@ -31,14 +30,18 @@ const PAGES = {
         <p class="h3">
             ${instructions}
         </p>
-        <button class="btn btn-primary" onclick="renderNextPage('semanticInstructionsPage');">
+        <button class="btn btn-primary" onclick="renderNextPage('typingInstructionsPage');">
             End instructions
         </button>
     `,
 
     semanticInstructionsPage: `
     <p class="h3">
-    You will now be completing a semantic fluency task. A category will be presented on the screen and you will have 1 minute to list as many words as possible that fall under that category. Press continue when you are ready to proceed.
+    You will now be completing a semantic fluency task.
+    <br> 
+    A category will be presented on the screen and you will have 1 minute to list as many words as possible that fall under that category. 
+    <br>
+    Press continue when you are ready to proceed.
     </p>
     <button class="btn btn-primary" onclick="renderNextPage('animalsPage');">
     continue
@@ -48,7 +51,7 @@ const PAGES = {
     animalsPage: `
         <form>
             <label for="animals" class="h4">Please list as many words as possible that fall under the category
-                <b>"Animals"</b> separated by commas and spaces - you have <span id="timeLeft">60</span> seconds</label>
+                <b>"Animals"</b> separated by commas and spaces <br>- you have <span id="timeLeft">60</span> seconds</label>
             <textarea class="form-control" name="animals" id="animals" placeholder="animal1, animal2, ..."></textarea>
             <button disabled type="button" class="form-control btn btn-primary mt-3" onclick="saveResultAndNext('animals', 'jobsPage');">next</button>
         </form>
@@ -57,7 +60,7 @@ const PAGES = {
     jobsPage: `
     <form>
         <label for="animals" class="h4">Please list as many words as possible that fall under the category
-            <b>"Jobs"</b> separated by commas and spaces - you have <span id="timeLeft">60</span> seconds</label>
+            <b>"Jobs"</b> separated by commas and spaces <br>- you have <span id="timeLeft">60</span> seconds</label>
         <textarea class="form-control" name="jobs" id="jobs" placeholder="job1, job2, ..."></textarea>
         <button disabled type="button" class="form-control btn btn-primary mt-3" onclick="saveResultAndNext('jobs', 'verbalSPage');">next</button>
     </form>
@@ -65,7 +68,11 @@ const PAGES = {
 
     verbalInstructionsPage: `
     <p class="h3">
-    You will now be completing a verbal fluency task. A letter will be presented on the screen and you will have 1 minute to list as many words as possible that start with that letter. Press continue when you are ready to proceed.
+    You will now be completing a verbal fluency task.
+    <br>
+     A letter will be presented on the screen and you will have 1 minute to list as many words as possible that start with that letter. 
+    <br>
+     Press continue when you are ready to proceed.
     </p>
     <button class="btn btn-primary" onclick="renderNextPage('verbalSPage');">
     continue
@@ -76,7 +83,7 @@ const PAGES = {
     <form>
         <label for="S" class="h4">
         Please list as many words as possible that start with the letter
-            <b>"s"</b> separated by commas and spaces - you have <span id="timeLeft">60</span> seconds</label>
+            <b>"s"</b> separated by commas and spaces <br>- you have <span id="timeLeft">60</span> seconds</label>
             <textarea class="form-control" name="S" id="S" placeholder="s---, s----, ..."></textarea>
             <button disabled type="button" class="form-control btn btn-primary mt-3" onclick="saveResultAndNext('S', 'verbalFPage');">next</button>
     </form>
@@ -86,7 +93,7 @@ const PAGES = {
     <form>
     <label for="F" class="h4">
     Please list as many words as possible that start with the letter
-        <b>"f"</b> separated by commas and spaces - you have <span id="timeLeft">60</span> seconds</label>
+        <b>"f"</b> separated by commas and spaces <br>- you have <span id="timeLeft">60</span> seconds</label>
         <textarea class="form-control" name="F" id="F" placeholder="f-----, f----, ..."></textarea>
         <button disabled type="button" class="form-control btn btn-primary mt-3" onclick="saveResultAndNext('F', 'typingInstructionsPage');">next</button>
     </form>
@@ -94,7 +101,9 @@ const PAGES = {
 
     typingInstructionsPage: `
     <p class="h3">
-    For the next section, a paragraph will appear on the screen. Type the paragraph as fast as possible in the textbox that will appear below within 60 seconds. Press continue when you are ready to proceed.
+    For the next section, a paragraph will appear on the screen. 
+    <br>Type the paragraph as fast as possible in the textbox that will appear below within 60 seconds. 
+    <br>Press continue when you are ready to proceed.
     </p>
     <button class="btn btn-primary" onclick="renderNextPage('typingPage');">
     continue
@@ -107,12 +116,13 @@ const PAGES = {
         <div class="quote-display" id="quoteDisplay">${typingQuoteHTML}
         </div>
         <textarea id="typing" class="quote-input" autofocus></textarea>
-        <button disabled type="button" class="form-control btn btn-primary mt-3" onclick="saveResultAndNext('typing', 'endingPage');">next</button>
+        <button disabled type="button" class="form-control btn btn-primary mt-3" onclick="saveResultAndNext('typing', 'semanticInstructionsPage');">next</button>
     </div>
     `,
     endingPage: `
     <p class="h3">
-    Task over. Thank you for participating in this study. You can close this window.
+    Task over. <br>Thank you for participating in this study. 
+    <br>You can close this window.
     </p>
     `,
 }

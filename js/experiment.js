@@ -1,13 +1,14 @@
 const RESULTS = {};
-
+const TYPING_TIME = 60;
+const EXP_TIME = 60;
 function renderNextPage(nextPage) {
-    const body = document.getElementsByTagName("body")[0];
-    body.innerHTML = PAGES[nextPage];
+    const main = document.getElementsByTagName("main")[0];
+    main.innerHTML = PAGES[nextPage];
     if (nextPage == "typingPage") {
         setupTypingTest();
-        typingTimer(10);
+        typingTimer(TYPING_TIME);
     } else if (["animalsPage", "jobsPage", "verbalSPage", "verbalFPage"].includes(nextPage)) {
-        expTimer(10);
+        expTimer(EXP_TIME);
     } else if (nextPage == "endingPage") {
         sendResults(RESULTS);
     }
