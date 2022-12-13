@@ -122,8 +122,7 @@ const PAGES = {
 
     endingPage: `
     <p class="h3">
-    Task over. <br>Thank you for participating in this study. 
-    <br>You can close this window.
+    Task Complete! <br>You should automatically be brought to the next task now. 
     </p>
     `,
 }
